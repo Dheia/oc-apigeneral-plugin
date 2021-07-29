@@ -1,0 +1,6 @@
+plugin:
+    name: 'sprintsoft.apigeneral::lang.plugin.name'
+    description: 'sprintsoft.apigeneral::lang.plugin.description'
+    author: Sprintsoft
+    icon: oc-icon-globe
+    homepage: ''
