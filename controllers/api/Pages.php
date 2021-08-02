@@ -42,7 +42,7 @@ class Pages extends Controller
     public function getPage($url)
     {
         $theme = Theme::getEditTheme();
-        $page = Page::load($theme, $url);
+        $page = Page::load($theme, $url . '_page');
         $arPage = [
             'title' => $page->title,
             'url' => $page->url,
