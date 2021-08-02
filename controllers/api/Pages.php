@@ -42,20 +42,24 @@ class Pages extends Controller
     public function getPage($url)
     {
         $theme = Theme::getEditTheme();
-        $page = Page::load($theme, $url . '_page');
-        $arPage = [
-            'title' => $page->title,
-            'url' => $page->url,
-            'content' => $page->getProcessedMarkup(),
-            'seo_params' => [
-                'seo_title' => $page->meta_title,
-                'seo_description' => $page->meta_description,
-                'seo_keywords' => $page->seo_keywords,
-                'robot_index' => $page->robot_index,
-                'robot_follow' => $page->robot_follow,
-                'canonical_url' => $page->canonical_url,
-            ]
-        ];
+        $page = Page::load($theme, ($url . '-page'));
+        if(!empty($page->title)){
+            $arPage = [
+                'title' => $page->title,
+                'url' => $page->url,
+                'content' => $page->getProcessedMarkup(),
+                'seo_params' => [
+                    'seo_title' => $page->meta_title,
+                    'seo_description' => $page->meta_description,
+                    'seo_keywords' => $page->seo_keywords,
+                    'robot_index' => $page->robot_index,
+                    'robot_follow' => $page->robot_follow,
+                    'canonical_url' => $page->canonical_url,
+                ]
+            ];
+        } else {
+            $arPage = false;
+        }
         return response()->json($arPage);
 
 
